@@ -1,0 +1,117 @@
+\documentclass{fhnwreport}         %[mode] = draft or final
+\input{fhnwheader}                        %loads all packages, definitions and settings	
+
+%%%%% Logo: Hocvhschule HTU oder HSI, Sprache DE oder EN:
+\newcommand{\logofilename}{FHNW_HSI_DE}
+\usepackage[style=apa,urldate=comp,backend=biber]{biblatex}
+\usepackage{booktabs}
+\usepackage{float} % für [H] bei Tabellen
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx}
+\addbibresource{literature/bib.bib}
+
+\let\oldcite\cite
+\renewcommand{\cite}{\parencite}
+											
+\title{The Architect's 1:1 Sandbox}  %Project Title
+\author{Bachelor Thesis}    %Document Type => Technical Report, ...
+\date{Windisch, August 2025}               %Place and Date
+
+\begin{document}
+
+\pagenumbering{roman}	
+
+%%---TITLEPAGE---------------------------------------------------------------------------
+\selectlanguage{ngerman}                  %ngerman or english
+\maketitle
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{graphics/titleimage.JPG}
+\end{figure}
+
+\vfill
+
+\begin{tabular}{@{}p{5cm} l}
+Studentin/Student          &    Luc Hartmann\\
+                           &    Jasjot Singh\\[2ex]
+Expertin/Experte           &    Reto Senn\\[2ex]
+Betreuerin/Betreuer        &    Hilko Cords\\
+                           &    Kevin Kim\\[2ex]
+Auftraggeberin             &    SCDH\\[2ex]
+Projektnummer              &    \verb|25FS_IIT41|\\[4ex]
+\multicolumn{2}{@{}l}{Fachhochschule Nordwestschweiz, Hochschule für Informatik}
+\end{tabular}
+
+\vspace*{4ex}
+% Beispiel für Logo Industriepartner
+\begin{tikzpicture}[remember picture,overlay,every node/.style={anchor=north east}]
+  \node at (current page.north east) [xshift=-1cm, yshift=-0.80cm] {\includegraphics[width=4cm]{graphics/SCDH.png}};
+  % Logo SCDH
+\end{tikzpicture}
+
+
+\clearpage
+			
+%%---ABSTRACT----------------------------------------------------------------------------
+\selectlanguage{ngerman}				%ngerman or english
+\thispagestyle{empty}
+\include{sections/abstract}
+
+%%---TABLE OF CONTENTS-------------------------------------------------------------------	
+\selectlanguage{ngerman}				%ngerman or english
+\tableofcontents
+\clearpage
+
+\listoffigures
+\listoftables
+\cleardoublepage
+
+%%---TEXT--------------------------------------------------------------------------------
+\pagenumbering{arabic}
+\include{sections/einleitung}
+\include{sections/Hintergrund und verwandte Arbeiten}
+\include{sections/Analyse der Ausgangslage}
+\include{sections/Lösung}
+\include{sections/implementation}
+\include{sections/auswertung}
+\include{sections/diskussion}
+\include{sections/schlusswort}
+
+
+%%---BIBLIOGRAPHY------------------------------------------------------------------------
+{\sloppypar
+\printbibliography[heading=bibintoc, title=Quellenverzeichnis]
+\section*{Hilfsmittelverzeichnis}
+\addcontentsline{toc}{section}{Hilfsmittelverzeichnis}
+
+\begin{tabular}{|p{3cm}|p{8cm}|p{3cm}|}
+    \hline
+    \textbf{Hilfsmittel} & \textbf{Verwendungszweck} & \textbf{Scope}\\
+    \hline
+    ChatGPT & Rechtschreibe- und Grammatikprüfung & Ganze Arbeit \\
+    \hline
+    Gemini & Rechtschreibe- und Grammatikprüfung & Ganze Arbeit \\
+    \hline
+    Overleaf & Erstellung, Bearbeitung und Kollaboration am LaTeX-Dokument & Ganze Arbeit \\
+    \hline
+\end{tabular}
+
+}
+
+%%---APPENDIX----------------------------------------------------------------------------
+\include{appendix/eigenstaendigkeit}
+\include{appendix/appendix}
+
+%%---NOTES for DEBUG---------------------------------------------------------------------
+%\newpage
+%\listoftodos[\section{Todo-Notes}]
+%\clearpage
+
+\end{document}
